@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300&family=Sarabun:wght@100&display=swap"
+      rel="stylesheet">
+    <title>Test N5</title>
+    <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
+    <meta name="importmap-type" content="systemjs-importmap" />
+
+    <script>
+      window.addEventListener('single-spa:first-mount', () => {
+        const loadingAnimation = document.querySelector('#single-spa-home');
+        if (loadingAnimation) {
+          loadingAnimation.remove();
+        };
+      });
+    </script>
+
+    <script type="systemjs-importmap">
+    {
+      "imports": {
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js"
+      }
+    }
+  </script>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
+
+    <% if (isLocal) { %>
+      <script type="systemjs-importmap">
+    {
+      "imports": {
+        "@n5/root-config": "//localhost:5000/n5now-root-config.js", 
+        "@n5/app-rick-and-morty": "//localhost:5001/n5now-app-rick-and-morty.js",
+        "@n5/app-harry-potter": "//localhost:5003/n5now-app-harry-potter.js"
+      }
+    }
+  </script>
+      <% } %>
+        <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
+        <% if (isLocal) { %>
+          <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
+          <% } else { %>
+            <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
+            <% } %>
+  </head>
+
+  <body>
+    <div id="single-spa-home">
+      <div class="home">
+        <div class="title">
+          ¡Bienvenido a N5 Test!
+        </div>
+        <div class="home__description">
+          En N5 Test, nos complace darte la más cordial bienvenida a nuestra comunidad en línea.
+          Nos enorgullece proporcionar un entorno inclusivo y amigable para todos nuestros visitantes, donde cada experiencia sea significativa.
+          No dudes en sumergirte en nuestro contenido y descubrir todo lo que N5 Test tiene para ti. ¡Esperamos que encuentres inspiración, aprendizaje y diversión en cada visita!
+        </div>
+        <div class="home__buttons">
+          <button class="button_rick">
+            <a href="/rick-and-morty" target="_blank">Rick and Morty</a>
+          </button>
+          <button class="button_harry">
+            <a href="/harry-potter" target="_blank">Harry Potter</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <main></main>
+    <script>
+      System.import('@n5/root-config');
+    </script>
+    <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
+  </body>
+
+  <style>
+    * {
+      font-family: 'Arial', sans-serif;
+      font-family: 'Tahoma', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .home {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .title {
+      padding: 10px;
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    .home__description {
+      padding: 10px;
+      font-size: 16px;
+      width: 450px;
+    }
+
+    .home__buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px;
+      width: 350px;
+      border-radius: 5%;
+    }
+
+    .button_rick {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #c90384;
+      border-radius: 20%;
+    }
+
+    .button_harry{
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #c90303;
+      border-radius: 20%;
+    }
+
+
+    .button_harry a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .button_rick a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+
+</html>
