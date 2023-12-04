@@ -1,7 +1,6 @@
 # @n5/app-orchestrator
 
 ## About Project
-question #1
 
 -What is accessibility and how is it achieved?
 
